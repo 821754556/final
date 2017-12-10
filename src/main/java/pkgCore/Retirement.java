@@ -13,16 +13,16 @@ public class Retirement {
 	
 	public double AmountToSave()
 	{
-		double rAnnualReturnWorking = dAnnualReturnWorking / 12;
-		double dMonthsToWork = iYearsToWork * 12;
-		double returnVal = 0;
-		if (rAnnualReturnWorking == 0) {
-			returnVal = TotalAmountSaved()/dMonthsToWork;
+		double RAnnualReturnWorking = dAnnualReturnWorking / 12;
+		double DMonthsToWork = iYearsToWork * 12;
+		double ReturnVal = 0;
+		if (RAnnualReturnWorking == 0) {
+			ReturnVal = TotalAmountSaved()/DMonthsToWork;
 	    }else {
-	    	returnVal = TotalAmountSaved()* rAnnualReturnWorking
-	                  /(Math.pow(1+rAnnualReturnWorking, dMonthsToWork)-1);
+	    	ReturnVal = TotalAmountSaved()* RAnnualReturnWorking
+	                  /(Math.pow(1+RAnnualReturnWorking, DMonthsToWork)-1);
 		}
-		return returnVal;
+		return ReturnVal;
 	}
 	
 	public int getiYearsToWork() {
@@ -86,15 +86,15 @@ public class Retirement {
 
 	public double TotalAmountSaved()
 	{
-		double rAnnaulReturnRetired = dAnnualReturnRetired / 12;
-		double returnVal = 0;
-		int dMonthsRetired = iYearsRetired*12;
-		if (rAnnaulReturnRetired == 0) {
-			returnVal = iYearsRetired*(dRequiredIncome - dMonthlySSI);
+		double RAnnaulReturnRetired = dAnnualReturnRetired / 12;
+		double ReturnVal = 0;
+		int DMonthsRetired = iYearsRetired*12;
+		if (RAnnaulReturnRetired == 0) {
+			ReturnVal = iYearsRetired*(dRequiredIncome - dMonthlySSI);
 		}else {
-			returnVal = (dRequiredIncome-dMonthlySSI)*((Math.pow(1+rAnnaulReturnRetired,dMonthsRetired)-1)/rAnnaulReturnRetired)
-					/Math.pow(1+rAnnaulReturnRetired, dMonthsRetired);
+			ReturnVal = (dRequiredIncome-dMonthlySSI)*((Math.pow(1+RAnnaulReturnRetired,DMonthsRetired)-1)/RAnnaulReturnRetired)
+					/Math.pow(1+RAnnaulReturnRetired, DMonthsRetired);
 		}
-		return returnVal;
+		return ReturnVal;
 	}
 }

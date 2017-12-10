@@ -18,22 +18,22 @@ public class RetirementController implements Initializable {
 	private RetirementApp mainApp = null;
 	
 	@FXML
-	private TextField txtYearsToWork;
+	private TextField TEXTYearsToWork;
 	
 	@FXML
-	private TextField txtWorkReturn;
+	private TextField TEXTWorkReturn;
 	@FXML
-	private TextField txtYearsToRetire;
+	private TextField TEXTYearsToRetire;
 	@FXML
-	private TextField txtRetireReturn;
+	private TextField TEXTRetireReturn;
 	@FXML
-	private TextField txtRequiredIncome;
+	private TextField TEXTRequiredIncome;
 	@FXML
-	private TextField txtSSI;
+	private TextField TEXTSSI;
 	@FXML
-	private Label monthSaveLabel;
+	private Label MONTHSaveLabel;
 	@FXML
-	private Label totalSaveLabel;
+	private Label TOTALSaveLabel;
 	
 
 	public RetirementApp getMainApp() {
@@ -51,14 +51,14 @@ public class RetirementController implements Initializable {
 	@FXML
 	public void btnClear(ActionEvent event) {
 		System.out.println("Clear pressed");
-		txtRequiredIncome.clear();
-		txtRetireReturn.clear();
-		txtSSI.clear();
-		txtWorkReturn.clear();
-		txtYearsToRetire.clear();
-		txtYearsToWork.clear();
-		monthSaveLabel.setText("");
-		totalSaveLabel.setText("");
+		TEXTRequiredIncome.clear();
+		TEXTRetireReturn.clear();
+		TEXTSSI.clear();
+		TEXTWorkReturn.clear();
+		TEXTYearsToRetire.clear();
+		TEXTYearsToWork.clear();
+		MONTHSaveLabel.setText("");
+		TOTALSaveLabel.setText("");
 	}
 	
 	@FXML
@@ -66,22 +66,22 @@ public class RetirementController implements Initializable {
 		if (!validate()) {
 			return;
 		}
-		Retirement retirement = new Retirement(Integer.parseInt(txtYearsToWork.getText()), Double.parseDouble(txtWorkReturn.getText())
-				, Integer.parseInt(txtYearsToRetire.getText()), Double.parseDouble(txtRetireReturn.getText()), Double.parseDouble(txtRequiredIncome.getText())
-				, Double.parseDouble(txtSSI.getText()));
-		totalSaveLabel.setText("$ "+String.format("%.2f",retirement.TotalAmountSaved()));
-		monthSaveLabel.setText("$ "+String.format("%.2f",retirement.AmountToSave()));
+		Retirement retirement = new Retirement(Integer.parseInt(TEXTYearsToWork.getText()), Double.parseDouble(TEXTWorkReturn.getText())
+				, Integer.parseInt(TEXTYearsToRetire.getText()), Double.parseDouble(TEXTRetireReturn.getText()), Double.parseDouble(TEXTRequiredIncome.getText())
+				, Double.parseDouble(TEXTSSI.getText()));
+		TOTALSaveLabel.setText("$ "+String.format("%.2f",retirement.TotalAmountSaved()));
+		MONTHSaveLabel.setText("$ "+String.format("%.2f",retirement.AmountToSave()));
 	}
 	
 	private boolean validate(){
-		if (txtWorkReturn.getText().isEmpty()) {
+		if (TEXTWorkReturn.getText().isEmpty()) {
 			 Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Annual Return of work can not be empty!");
 			 _alert.show();
 			 return false;
 		}
 		try {
-			double workReturn = Double.parseDouble(txtWorkReturn.getText());
+			double workReturn = Double.parseDouble(TEXTWorkReturn.getText());
 			if (workReturn<0||workReturn>0.2) {
 				Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 				 _alert.setContentText("Annual Return of work must between 0 and 0.2!");
@@ -95,14 +95,14 @@ public class RetirementController implements Initializable {
 			 return false;
 		}
 		
-		if (txtYearsToWork.getText().isEmpty()) {
+		if (TEXTYearsToWork.getText().isEmpty()) {
 			 Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Years to work can not be empty!");
 			 _alert.show();
 			 return false;
 		}
 		try {
-			Integer.parseInt(txtYearsToWork.getText());
+			Integer.parseInt(TEXTYearsToWork.getText());
 		} catch (NumberFormatException e) {
 			Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Years to work must be a valid integer!");
@@ -110,14 +110,14 @@ public class RetirementController implements Initializable {
 			 return false;
 		}
 		
-		if (txtYearsToRetire.getText().isEmpty()) {
+		if (TEXTYearsToRetire.getText().isEmpty()) {
 			 Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Years to retire can not be empty!");
 			 _alert.show();
 			 return false;
 		}
 		try {
-			Integer.parseInt(txtYearsToRetire.getText());
+			Integer.parseInt(TEXTYearsToRetire.getText());
 		} catch (NumberFormatException e) {
 			Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Years to retire must be a valid integer!");
@@ -125,14 +125,14 @@ public class RetirementController implements Initializable {
 			 return false;
 		}
 		
-		if (txtRetireReturn.getText().isEmpty()) {
+		if (TEXTRetireReturn.getText().isEmpty()) {
 			 Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Annual Return of retire can not be empty!");
 			 _alert.show();
 			 return false;
 		}
 		try {
-			double retireReturn = Double.parseDouble(txtRetireReturn.getText());
+			double retireReturn = Double.parseDouble(TEXTRetireReturn.getText());
 			if (retireReturn<0||retireReturn>0.03) {
 				Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 				 _alert.setContentText("Annual Return of retire must between 0 and 0.03!");
@@ -146,14 +146,14 @@ public class RetirementController implements Initializable {
 			 return false;
 		}
 		
-		if (txtRequiredIncome.getText().isEmpty()) {
+		if (TEXTRequiredIncome.getText().isEmpty()) {
 			 Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Required Income can not be empty!");
 			 _alert.show();
 			 return false;
 		}
 		try {
-			Double.parseDouble(txtRequiredIncome.getText());
+			Double.parseDouble(TEXTRequiredIncome.getText());
 		} catch (NumberFormatException e) {
 			Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Required Income must be a valid number!");
@@ -161,14 +161,14 @@ public class RetirementController implements Initializable {
 			 return false;
 		}
 		
-		if (txtSSI.getText().isEmpty()) {
+		if (TEXTSSI.getText().isEmpty()) {
 			 Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Monthly SSI can not be empty!");
 			 _alert.show();
 			 return false;
 		}
 		try {
-			Double.parseDouble(txtSSI.getText());
+			Double.parseDouble(TEXTSSI.getText());
 		} catch (NumberFormatException e) {
 			Alert _alert = new Alert(Alert.AlertType.INFORMATION);
 			 _alert.setContentText("Monthly SSI must be a valid number!");
